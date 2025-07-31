@@ -2,6 +2,7 @@
 let listaAmigoSecreto = [];
 let nombreAñadir;
 let listaAmigos = document.getElementById('listaAmigos');
+let nombreElegido = document.getElementById('resultado');
 let contador = 0;
 
 function agregarAmigo(){
@@ -16,7 +17,6 @@ function agregarAmigo(){
         [^...] significa "cualquier carácter que NO esté en este conjunto".
         .test() verifica si hay AL MENOS UN carácter que NO sea una letra, tilde, ñ o espacio.
     */
-
 
     console.warn('que tipo de entrada es:');
     console.log(typeof(nombreAñadir));
@@ -38,7 +38,6 @@ function agregarAmigo(){
     }else {
         alert('El dato insertado no corresponde a un nombre, \npor favor vuelve a intentarlo');
     }
-
     return;
 }
 
@@ -50,5 +49,11 @@ function lista(){
         listaAmigos.appendChild(nuevoElemento);
         console.warn(`contador en ${contador}`);
     }
+    return;
+}
+
+function sortearAmigo(){
+    let suerteLista = Math.floor(Math.random()*listaAmigoSecreto.length);
+    nombreElegido.innerHTML = `Tu amigo secreto sera: ${listaAmigoSecreto[suerteLista]}`;
     return;
 }
