@@ -1,6 +1,8 @@
 // El principal objetivo de este desafío es fortalecer tus habilidades en lógica de programación. Aquí deberás desarrollar la lógica para resolver el problema.
 let listaAmigoSecreto = [];
 let nombreAñadir;
+let listaAmigos = document.getElementById('listaAmigos');
+let contador = 0;
 
 function agregarAmigo(){
     nombreAñadir = document.getElementById('amigo').value
@@ -15,6 +17,7 @@ function agregarAmigo(){
         .test() verifica si hay AL MENOS UN carácter que NO sea una letra, tilde, ñ o espacio.
     */
 
+
     console.warn('que tipo de entrada es:');
     console.log(typeof(nombreAñadir));
 
@@ -26,14 +29,26 @@ function agregarAmigo(){
 
     console.warn('contiene caracteres:')
     console.log(excluyeCaracteres);
-
+    
     if (estaVacio === false && sonNumeros === false && esString && excluyeCaracteres) {
         listaAmigoSecreto.push(nombreAñadir);
         document.querySelector('#amigo').value = '';
         console.log(listaAmigoSecreto)
+        lista();
     }else {
         alert('El dato insertado no corresponde a un nombre, \npor favor vuelve a intentarlo');
     }
 
+    return;
+}
+
+function lista(){
+    listaAmigos.innerHTML = "";
+    for (contador = 0; contador < listaAmigoSecreto.length; contador++) {
+        let nuevoElemento = document.createElement('li');
+        nuevoElemento.textContent = listaAmigoSecreto[contador];
+        listaAmigos.appendChild(nuevoElemento);
+        console.warn(`contador en ${contador}`);
+    }
     return;
 }
